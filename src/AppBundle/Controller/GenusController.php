@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 class GenusController extends Controller
 {
     /**
-     * @Route("/genus")
+     * @Route("/genus/{genusName}")
      */
-    public function showAction()
+    public function showAction($genusName)
     {
-        return new Response('Under the sea!');
+        return new Response('The genus: '.$genusName);
     }
 }
