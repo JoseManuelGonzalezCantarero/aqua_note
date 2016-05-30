@@ -38,6 +38,11 @@ class Genus
     private $funFact;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished = true;
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -99,6 +104,14 @@ class Genus
     public function setFunFact($funFact)
     {
         $this->funFact = $funFact;
+    }
+
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
     }
     
     public function getUpdatedAt()
