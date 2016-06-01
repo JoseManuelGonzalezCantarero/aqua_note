@@ -65,7 +65,7 @@ class GenusController extends Controller
             throw $this->createNotFoundException('Genus not found');
         }
 
-        $markdownParser = new MarkdownTransformer($this->get('markdown.parser'));
+        $markdownParser = $this->get('app.markdown_transformer');
         $funFact = $markdownParser->parse($genus->getFunFact());
         // todo - add the caching back later
         /*
