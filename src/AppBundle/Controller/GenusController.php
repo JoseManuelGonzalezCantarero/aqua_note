@@ -26,32 +26,7 @@ class GenusController extends Controller
             'genuses' => $genuses
         ]);
     }
-
-    /**
-     * @Route("/genus/new")
-     */
-    public function newAction()
-    {
-        $genus = new Genus();
-        $genus->setName('Octopus'.rand(1,100));
-        $genus->setSubfamily('Octopodinae');
-        $genus->setSpeciesCount(rand(100, 99999));
-
-        $note = new GenusNote();
-        $note->setUsername('AquaWeaver');
-        $note->setUserAvatarFilename('ryan.jpeg');
-        $note->setNote('I counted 8 legs... as they wrapped around me');
-        $note->setCreatedAt(new \DateTime('-1 month'));
-        $note->setGenus($genus);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($genus);
-        $em->persist($note);
-        $em->flush();
-
-
-        return new Response('<html><body>Genus created!</body></html>');
-    }
+    
     /**
      * @Route("/genus/{genusName}", name="genus_show")
      */
@@ -59,6 +34,7 @@ class GenusController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $genus = $em->getRepository('AppBundle:Genus')->findOneBy(['name' => $genusName]);
+        $subfamily = $em->getRepository('AppBundle:SubFamily')->findOneById($genus->getSubFamily()->getId());
 
         if(!$genus)
         {
@@ -70,6 +46,7 @@ class GenusController extends Controller
         $recentNotes = $em->getRepository('AppBundle:GenusNote')->findAllRecentNotesForGenus($genus);
         return $this->render('genus/show.html.twig', [
            'genus' => $genus,
+            'subfamily' => $subfamily,
             'funFact' => $funFact,
             'recentNoteCount' => count($recentNotes)
         ]);
