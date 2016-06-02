@@ -14,12 +14,17 @@ class GenusFormType extends AbstractType
             ->add('name')
             ->add('speciesCount')
             ->add('funFact')
+            ->add('subFamily')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            'data_class' => 'AppBundle\Entity\Genus'
+        ]);
     }
 
     public function getName()

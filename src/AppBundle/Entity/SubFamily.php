@@ -13,20 +13,29 @@ class SubFamily
      * @ORM\Column(type="integer")
      */
     private $id;
+
     /**
      * @ORM\Column(type="string")
      */
     private $name;
+
     public function getId()
     {
         return $this->id;
     }
+
     public function getName()
     {
         return $this->name;
     }
+
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
