@@ -26,8 +26,15 @@
         <li><a href="{{ path('admin_genus_new') }}">Add new genus</a></li>
     </ul>
 </header>
+<div class="main-content">
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
 
-{% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+</div>
 
 <div class="footer">
     <p class="footer-text">Made with <span class="heart"><3</span> <a href="https://knpuniversity.com">KnpUniversity</a></p>

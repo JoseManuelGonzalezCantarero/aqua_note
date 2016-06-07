@@ -15,7 +15,7 @@ class GenusController extends Controller
 {
 
     /**
-     * @Route("/genus")
+     * @Route("/genus", name="genus_list")
      */
     public function listAction()
     {

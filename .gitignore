@@ -85,3 +85,11 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+bin/
+var/cache/
+var/logs/
+var/sessions/dev/sess_n5fpf35m0hmlp64psqk9489o63
+vendor/
+web/bundles/
+web/css/
+web/js/
