@@ -2,6 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\SubFamily;
+use AppBundle\Repository\SubFamilyRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,8 +18,12 @@ class GenusFormType extends AbstractType
             ->add('name')
             ->add('speciesCount')
             ->add('funFact')
-            ->add('subFamily', null, [
-                'placeholder' => 'Choose a Sub Family'
+            ->add('subFamily', EntityType::class, [
+                'class' => SubFamily::class,
+                'placeholder' => 'Choose a Sub Family',
+                'query_builder' => function(SubFamilyRepository $repo){
+                    return $repo->createAlphabeticalQueryBuilder();
+                }
             ])
             ->add('isPublished', ChoiceType::class, [
                 'choices' => [
