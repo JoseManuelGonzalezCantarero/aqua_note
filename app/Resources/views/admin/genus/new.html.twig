@@ -24,7 +24,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.js-datepicker').datepicker();
+            $('.js-datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            });
         });
     </script>
 {% endblock %}
