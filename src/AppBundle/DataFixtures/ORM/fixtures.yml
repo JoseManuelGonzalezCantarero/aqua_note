@@ -16,3 +16,6 @@ AppBundle\Entity\GenusNote:
 AppBundle\Entity\SubFamily:
     genus.subFamily_{1..50}:
         name: <text(20)>
+AppBundle\Entity\User:
+    users_{1..10}:
+        email: weaverryan+<current()>@gmail.com
